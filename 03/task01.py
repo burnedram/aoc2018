@@ -3,13 +3,7 @@
 import sys
 from parse import parse
 from collections import defaultdict
-
-class Claim:
-    def __init__(self, line):
-        (self.id, self.x, self.y, self.w, self.h) = map(int, parse("#{} @ {},{}: {}x{}", line))
-
-    def __str__(self):
-        return "#{} @ {},{}: {}x{}".format(self.id, self.x, self.y, self.w, self.h)
+from models import Claim
 
 land = defaultdict(int)
 for line in sys.stdin:
