@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import sys
-from parse import parse
 from collections import defaultdict
 from models import Claim
 
