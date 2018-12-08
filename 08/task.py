@@ -6,19 +6,16 @@ class Node:
     def __init__(self):
         self.children = list()
         self.metadata = list()
+        self.sum_metadata = None
         self.value = None
 
-    def sum_metadata(self):
-        return sum(self.metadata) + sum(map(lambda x: x.sum_metadata(), self.children))
+    def calc(self):
+        self.sum_metadata = sum(self.metadata) + sum(map(lambda x: x.sum_metadata, self.children))
 
-    def get_value(self):
-        if not self.value is None:
-            return self.value
         if not self.children:
             self.value = sum(self.metadata)
-            return self.value
-        self.value = sum(map(lambda x: self.children[x - 1].get_value() if x > 0 and x - 1 < len(self.children) else 0, self.metadata))
-        return self.value
+        else:
+            self.value = sum(map(lambda x: self.children[x - 1].value if x > 0 and x - 1 < len(self.children) else 0, self.metadata))
 
 nodes = list()
 n_children = list()
@@ -47,7 +44,7 @@ def consume_child(n):
 def consume_metadata(n):
     nm = n_metadata.pop()
     if nm == 0:
-        nodes.pop()
+        nodes.pop().calc()
         return consume_child(n)
     nodes[-1].metadata.append(n)
     n_metadata.append(nm - 1)
@@ -58,5 +55,6 @@ for n in map(int, sys.stdin.read().split()):
     operation = operation(n)
 
 root = nodes.pop()
-print("Sum of metadata: {}".format(root.sum_metadata()))
-print("Root value: {}".format(root.get_value()))
+root.calc()
+print("Sum of metadata: {}".format(root.sum_metadata))
+print("Root value: {}".format(root.value))
