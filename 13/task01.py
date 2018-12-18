@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env pipenv-run
 
 import sys
 from functools import partial
