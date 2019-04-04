@@ -238,4 +238,4 @@ print('WARNING: Task 02 will take a very very long time to run, like a few years
 
 while step():
     pass
-print('Task 02: {}'.format(registers[0])
+print('Task 02: {}'.format(registers[0]))
