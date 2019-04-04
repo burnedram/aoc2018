@@ -227,4 +227,15 @@ def step():
 
 while step():
     pass
-print('Register 0: {}'.format(registers[0]))
+print('Task 01: {}'.format(registers[0]))
+
+pc = 0
+registers = defaultdict(int)
+registers[0] = 1
+
+print()
+print('WARNING: Task 02 will take a very very long time to run, like a few years. CTRL-C to stop')
+
+while step():
+    pass
+print('Task 02: {}'.format(registers[0])
