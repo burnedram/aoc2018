@@ -72,8 +72,12 @@ def print_grid(grid, pos_x, pos_y):
                 print('o', end='')
             elif (x, y) in grid:
                 print(grid[(x, y)], end='')
-            else:
+            elif (x - 1, y) in grid and (x + 1, y) in grid:
                 print('?', end='')
+            elif (x, y - 1) in grid and (x, y + 1) in grid:
+                print('?', end='')
+            else:
+                print(' ', end='')
         print()
 
 state = (
